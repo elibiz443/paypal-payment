@@ -127,6 +127,9 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
+    paypal-checkout-sdk (1.0.4)
+      paypalhttp (~> 1.0.1)
+    paypalhttp (1.0.1)
     pg (1.4.6)
     public_suffix (5.0.1)
     puma (5.6.5)
@@ -215,6 +218,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  paypal-checkout-sdk
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
