@@ -286,6 +286,9 @@ Update views to:
 
 ```
 
+Setting up credentials
+Get client ID and client secret by going to https://developer.paypal.com/developer/applications and generating a REST API app. Get Client ID and Secret from there.
+
 Modify seed.rb to:
 ```
 User.create(
