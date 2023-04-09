@@ -1,2 +1,48 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div id="smart-button-container">
+  <div style="padding: 10px;">
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: build_alert_classes(type) %>
+    <% end %>
+  </div>
+
+  <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AQEtm4Pk5EAEp-Qijyem0gVMA-XJW07D9xesRffx2cM_rKXuG2-xeBzRB7LEM5z50N42hlHsTJBZMgYx" data-sdk-integration-source="button-factory"></script>
+
+<script>
+
+  paypal.Buttons({
+    style: {
+      color: 'blue',
+      shape: 'pill',
+      label: 'checkout',
+      layout: 'vertical',
+      
+    },
+    env: 'sandbox', // Valid values are sandbox and live.
+
+    createOrder: async () => {
+      const response = await fetch('/create_order', {method: 'POST'});
+      const responseData = await response.json();
+      return responseData.token;
+    },
+
+    onApprove: async (data) => {
+      const response = await fetch('/capture_order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({order_id: data.orderID})
+      });
+      const responseData = await response.json();
+      if (responseData.status === 'COMPLETED') {
+        // Show a success message within this page
+        window.location.href='/confirmation';
+      }
+    }
+  }).render('#paypal-button-container');
+
+</script>
