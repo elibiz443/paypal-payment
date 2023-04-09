@@ -2,12 +2,20 @@
 
 This is an app to trigger payment through paypal.
 
+Requirements:
+```
+Ruby version -> 3.1.3
+Rails version -> 7.0.4
+postgresql
+```
+
 ### Steps to run:
 ```
 git clone git@github.com:elibiz443/paypal-payment.git
+cd paypal-payment
 bundle
 rails db:create db:migrate db:seed && rails s
-localhost:3000
+localhost:3000(In browser)
 ```
 
 ### The making of the app:
