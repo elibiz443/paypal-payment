@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paid: false
+  name: MyString
+  token: MyString
+  price: 1.5
+  currency: MyString
+  user_id: 
+
+two:
+  paid: false
+  name: MyString
+  token: MyString
+  price: 1.5
+  currency: MyString
+  user_id: 
